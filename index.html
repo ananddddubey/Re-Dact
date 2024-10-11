@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Redactrion - Data Redaction Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Redactrion</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <label for="file">Choose a file to redact:</label>
+            <input type="file" id="file" name="file" required>
+
+            <label for="level">Select Redaction Level:</label>
+            <select id="level" name="level" required>
+                <option value="1">Low</option>
+                <option value="2">Medium</option>
+                <option value="3">High</option>
+            </select>
+
+            <button type="submit">Redact</button>
+        </form>
+
+        {% if download_link %}
+            <div class="download">
+                <a href="{{ download_link }}" download>Download Redacted File</a>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
